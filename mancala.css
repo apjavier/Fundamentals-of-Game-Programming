@@ -1,0 +1,151 @@
+div {
+    box-sizing: border-box;
+}
+
+#board {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px #333
+}
+
+.score {
+  position: absolute;
+  width: 100px;
+  height: 500px;
+  border: 1px solid #666
+  overflow: auto;
+}
+
+#hole-0 {
+  left: 100px;
+  top: 250px;
+}
+
+#hole-1 {
+  left: 200px;
+  top: 250px;
+}
+
+#hole-2 {
+  left: 300px;
+  top: 250px;
+}
+
+#hole-3 {
+  left: 400px;
+  top: 250px;
+}
+
+#hole-4 {
+  left: 500px;
+  top: 250px;
+}
+
+#hole-5 {
+  left: 600px;
+  top: 250px;
+}
+
+#score-0 {
+  left: 700px;
+  top: 0;
+}
+
+#hole-6 {
+  left: 600px;
+  top: 0px;
+}
+
+#hole-7 {
+  left: 500px;
+  top: 0px;
+}
+
+#hole-8 {
+  left: 400px;
+  top: 0px;
+}
+
+#hole-9 {
+  left: 300px;
+  top: 0px;
+}
+
+#hole-10 {
+  left: 200px;
+  top: 0px;
+}
+
+#hole-11 {
+  left: 100px;
+  top: 0px;
+}
+
+#score-1 {
+  left: 0;
+  top: 0;
+}
+
+#scoreDisplay-0 {
+  left: 50px;
+  top: 480px;
+}
+
+#scoreDisplay-1 {
+  left: 750px;
+  top: 480px;
+}
+
+.btn {
+    border: auto;
+    background-color: inherit;
+    padding: 30px 50px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.scoreDisplay {
+  position: absolute;
+  border: 1px solid #444;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  font-size: 12;
+  display: block;
+}
+
+.hole {
+  position: absolute;
+  width: 100px;
+  height: 250px;
+  border: 1px solid #666;
+  cursor: pointer;
+  overflow: auto;
+}
+
+.piece {
+  margin: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}
+
+.red {
+  background-color: red;
+}
+
+#ui .piece {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
