@@ -60,7 +60,6 @@ for(var i = 0; i < 7; i++){
 function handleKeydown(event) {
   switch(event.key) {
     case ' ':
-    console.log('fire?', currentInput, priorInput)
       currentInput.space = true;
       break;
     case 'ArrowUp':
@@ -86,7 +85,6 @@ window.addEventListener('keydown', handleKeydown);
 function handleKeyup(event) {
   switch(event.key) {
     case ' ':
-    console.log('no fire?', currentInput, priorInput)
       currentInput.space = false;
       break;
     case 'ArrowUp':
@@ -125,17 +123,14 @@ function gameLoop(timestamp) {
 }
 
 function endGame() {
-  //lose
   if(health === 0){
     alert("Game Over! You Died! Press the button to play again.");
   }
-  else if (eY >= HEIGHT) {
-    alert("Game Over! The Invaders reached the bottom! Press the button to play again.");
-  }
-
-  //win
-  if(enemies === 0){
+  else if(enemies === 0){
     alert("Congratulations you won! Press the button to play again.");
+  }
+  else {
+    alert("Game Over! The Invaders reached the bottom! Press the button to play again.");
   }
   return;
 }
@@ -146,8 +141,7 @@ function copyInput() {
 
 function update(elapsedTime) {
   if(currentInput.space && !priorInput.space) {
-    bullets.push(new Bullet(x+340, y+639, 2, "p"));
-    console.log("bullet go", bullets);
+    bullets.push(new Bullet(x+340, y+649, 2, "p"));
   }
   if(currentInput.up) {
     y -= 0.15 * elapsedTime;
@@ -192,7 +186,7 @@ function update(elapsedTime) {
     else if(enemiesAr[i][0].alive){
       lowestEnemy = enemiesAr[i][0];
     }
-    var randNum = Math.floor((Math.random() * 500) + 1);
+    var randNum = Math.floor((Math.random() * 200) + 1);
 
     if (randNum === 1 && lowestEnemy != null){
       bullets.push(new Bullet(lowestEnemy.x+10, lowestEnemy.y+21, 2, "e"));
@@ -266,17 +260,16 @@ function render(ctx) {
     for(var j = 0; j < 4; j++){
       if(enemiesAr[i][j]){
         ctx.fillRect(enemiesAr[i][j].x,enemiesAr[i][j].y,20,20)
+        //checks if an enemy has reached the bottom
+        if(enemiesAr[i][j].y > HEIGHT){
+          gameOver = true;
+          return;
+        }
       }
     }
   }
-  //checks if an enemy has reached the bottom
-  enemiesAr.forEach(function(enemy){
-    if(Enemy.y > HEIGHT){
-      gameOver = true;
-    }
-  });
 
-  //draw player bullets
+  //draw all bullets
   bullets.forEach(function(bullet){
     bullet.render(ctx);
   });
@@ -292,8 +285,8 @@ function startup() {
   eX = 0;
   eY = 0;
   flagDown = false;
-  flagLeft = true;
-  flagRight = false;
+  flagLeft = false;
+  flagRight = true;
   gameOver = false;
   score = 0;
   health = 3;
